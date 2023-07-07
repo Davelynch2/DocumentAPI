@@ -1,21 +1,22 @@
 ﻿using DocumentAPI.Db;
-using DocumentAPI.Model;
+using DocumentAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocumentAPI.Controllers
 {
 	[Route("api/files")]
 	[ApiController]
-	public class FileController : ControllerBase
+	public class DocumentsController : ControllerBase
 	{
-		 private readonly FileUserDbContext _context;
-		public FileController(FileUserDbContext contex)
+		private readonly FileUserDbContext _context;
+
+		public DocumentsController(FileUserDbContext contex)
 		{
 			_context = contex;
 		}
 
 		[HttpPost]
-		public IActionResult UploadFile(IFormFile postedFile)
+		public IActionResult UploadDocument(IFormFile postedFile)
 		{
 			if (postedFile == null || postedFile.Length == 0)
 			{
@@ -45,7 +46,7 @@ namespace DocumentAPI.Controllers
 
 		[Route("{id}")]
 		[HttpGet]
-		public IActionResult DownloadFile(int id)
+		public IActionResult DownloadDocument(int id)
 		{
 			var file = _context.Files.SingleOrDefault(f => f.Id == id);
 
