@@ -61,9 +61,9 @@ namespace DocumentAPI.Controllers
 		[HttpGet(Name = "GetEvents")]
 		public async Task<IActionResult> GetAllEvents(EventParameters eventparameters)
 		{
-			var events = _context.Events.Include(x => x.DeclaredBy).Include(x => x.Documents)
+			var events = await _context.Events.Include(x => x.DeclaredBy).Include(x => x.Documents)
 				.OrderBy(x => x.DeclarationDateTime)
-				.ToList();
+				.ToListAsync();
 
 			if (eventparameters.Before != null)
 			{
