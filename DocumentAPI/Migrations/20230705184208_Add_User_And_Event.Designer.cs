@@ -4,6 +4,7 @@ using DocumentAPI.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DocumentAPI.Migrations
 {
     [DbContext(typeof(FileUserDbContext))]
-    partial class FileUserDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230705184208_Add_User_And_Event")]
+    partial class Add_User_And_Event
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +32,7 @@ namespace DocumentAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("DeclarationDateTime")
+                    b.Property<DateTime?>("DeclarationDateTime")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("DeclaredById")
