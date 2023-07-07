@@ -1,4 +1,4 @@
-﻿namespace DocumentAPI.Model
+﻿namespace DocumentAPI.Models
 {
     public class FileModel
     {
