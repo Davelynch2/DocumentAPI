@@ -1,4 +1,4 @@
-﻿using DocumentAPI.Model;
+﻿using DocumentAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DocumentAPI.Db
@@ -11,5 +11,7 @@ namespace DocumentAPI.Db
 		}
 
 		public DbSet<FileModel>? Files {get; set;}
+		public DbSet<Event> Events { get; set; }
+		public DbSet<User> Users { get; set; }
 	}
 }
