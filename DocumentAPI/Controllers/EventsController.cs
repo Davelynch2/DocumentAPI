@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DocumentAPI.Db;
 using DocumentAPI.DTO;
+using DocumentAPI.Filetring;
 using DocumentAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -58,9 +59,21 @@ namespace DocumentAPI.Controllers
 		}
 
 		[HttpGet(Name = "GetEvents")]
-		public async Task<IActionResult> GetAllEvents()
+		public async Task<IActionResult> GetAllEvents(EventParameters eventparameters)
 		{
-			var events = await _context.Events.Include(x => x.DeclaredBy).Include(x => x.Documents).ToListAsync();
+			var events = _context.Events.Include(x => x.DeclaredBy).Include(x => x.Documents)
+				.OrderBy(x => x.DeclarationDateTime)
+				.ToList();
+
+			if (eventparameters.Before != null)
+			{
+				events = events.Where(e => e.DeclarationDateTime < eventparameters.Before).ToList();
+			}
+
+			if (eventparameters.ContainsDocuments != null)
+			{
+				events = events.Where(e => (e.Documents != null && e.Documents.Any()) == eventparameters.ContainsDocuments).ToList();
+			}
 
 			var eventsDto = _mapper.Map<IEnumerable<EventDto>>(events);
 
