@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+ db:
+  image: postgres
+  restart: always
+  environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?database password not set}
+  ports:
+      - "55432:5432"
+ documentapi:
+    image: ${DOCKER_REGISTRY-}documentapi
+    build:
+      context: .
+      dockerfile: DocumentAPI/Dockerfile

@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+ db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?database password not set}
+      POSTGRES_DB: my_db
+    volumes:
+      - postgresdata-volume:/var/lib/postgresql/data
+    ports:
+      - "55432:5432"
+ adminer:
+   image: adminer
+   restart: always
+   ports:
+     - 8080:8080
+ documentapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6100:80"
+    depends_on:
+        - db
+volumes:
+ postgresdata-volume:
