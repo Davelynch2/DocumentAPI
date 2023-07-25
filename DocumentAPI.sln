@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentAPI", "DocumentAPI\DocumentAPI.csproj", "{B4EF3EFA-A338-427D-BA99-C1DC989133EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentAPI", "DocumentAPI\DocumentAPI.csproj", "{B4EF3EFA-A338-427D-BA99-C1DC989133EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{51015629-1767-4A4E-A03F-17902E5346ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{51015629-1767-4A4E-A03F-17902E5346ED}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C04116A1-45A4-4A6E-98C8-83B98DF4BD73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{51015629-1767-4A4E-A03F-17902E5346ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51015629-1767-4A4E-A03F-17902E5346ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51015629-1767-4A4E-A03F-17902E5346ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C04116A1-45A4-4A6E-98C8-83B98DF4BD73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C04116A1-45A4-4A6E-98C8-83B98DF4BD73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C04116A1-45A4-4A6E-98C8-83B98DF4BD73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C04116A1-45A4-4A6E-98C8-83B98DF4BD73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
