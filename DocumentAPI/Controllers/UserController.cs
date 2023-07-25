@@ -58,7 +58,12 @@ namespace DocumentAPI.Controllers
 		{
 			IEnumerable<User> users = _context.Users.OrderBy(u => u.LastName).ToList();
 
-			IEnumerable<UserDto> usersToReturn = _mapper.Map<IEnumerable<UserDto>>(users);
+			IEnumerable<UserDto> usersToReturn = new List<UserDto>();
+
+			if (users.Any())
+			{
+				usersToReturn = _mapper.Map<IEnumerable<UserDto>>(users);
+			}
 
 			return Ok(usersToReturn);
 		}
